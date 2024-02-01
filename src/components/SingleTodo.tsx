@@ -6,7 +6,6 @@ interface SingleTodoProps {
   todo: ITodo;
   todos: ITodo[];
   setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
-  handleDone: () => void;
 }
 
 const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
@@ -47,12 +46,12 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
 
   return (
     <form
-      className="todo_container min-w-[200px] max-w-[400px] h-30 px-8 py-5 my-3 content-end flex justify-between bg-green-400 rounded"
+      className="todo_container w-[400px] min-w-[200px] h-30 px-8 py-5 my-3 content-end flex justify-between bg-slate-50 rounded drop-shadow-xl"
       onSubmit={(e) => handleUpdate(e, todo.id)}
     >
       {edit && !todo.isDone ? (
         <input
-          className="focus: outline-none focus:ring focus:ring-amber-300 rounded"
+          className="focus: outline-none focus:ring focus:ring-slate-400 rounded"
           value={editTodo}
           onChange={(e) => setEditTodo(e.target.value)}
           ref={inputRef}
@@ -60,7 +59,7 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
       ) : todo.isDone ? (
         <s className="todo_tex">{todo.todo}</s>
       ) : (
-        <span className="todo_tex">{todo.todo}</span>
+        <span className="todo_text mt-1">{todo.todo}</span>
       )}
 
       {/* {todo.isDone ? (
@@ -70,7 +69,7 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
       )} */}
       <div className="flex space-x-3">
         <div
-          className="todo_icon w-fit h-fit bg-red-500 rounded-full p-2"
+          className="todo_icon w-fit h-fit bg-slate-200 hover:bg-blue-400 hover:scale-125 drop-shadow-lg transition duration-200 rounded-full p-2 cursor-pointer"
           onClick={() => {
             handleEdit();
           }}
@@ -78,7 +77,7 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
           <MdEdit />
         </div>
         <div
-          className="todo_icon w-fit h-fit bg-red-500 rounded-full p-2"
+          className="todo_icon w-fit h-fit bg-slate-200 hover:bg-red-400 hover:scale-125 drop-shadow-lg transition duration-200 rounded-full p-2 cursor-pointer"
           onClick={() => {
             handleDelete(todo.id);
           }}
@@ -86,7 +85,7 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
           <MdDelete />
         </div>
         <div
-          className="todo_icon w-fit h-fit bg-red-500 rounded-full p-2"
+          className="todo_icon w-fit h-fit bg-slate-200 hover:bg-green-400 hover:scale-125 drop-shadow-lg transition duration-200 rounded-full p-2 cursor-pointer"
           onClick={() => {
             handleDone(todo.id);
           }}

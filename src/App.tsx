@@ -19,9 +19,9 @@ function App() {
 
   return (
     <>
-      <div className="w-full justify-center">
-        <div className="flex-col justify-center">
-          <h1 className="text-3xl text-center">taskify</h1>
+      <div className="w-full flex flex-col justify-center">
+        <div className="mt-20 justify-center">
+          <h1 className="mb-5 text-3xl text-center">taskify</h1>
           <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
           <TodoList todos={todos} setTodos={setTodos} />
         </div>
